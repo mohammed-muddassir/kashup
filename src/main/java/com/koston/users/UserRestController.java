@@ -29,4 +29,11 @@ public class UserRestController
         return ResponseEntity.ok(ApplicationUtil.getResponseMap(HttpStatus.ACCEPTED.value(), "User Created Successfully"));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) throws Exception
+    {
+        getUserService().updateUserDetails(id, userRequestDTO);
+        return ResponseEntity.ok(ApplicationUtil.getResponseMap(HttpStatus.OK.value(), "User Details Updated Successfully"));
+    }
+
 }
